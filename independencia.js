@@ -1,5 +1,5 @@
-const TORELANCIA_INDEPENDENCIA = 0.8;
-const NUM_SIMULACOES = 1e5;
+const TORELANCIA_INDEPENDENCIA = 2;
+const NUM_SIMULACOES = 3e5;
 let arestas = [];
 let d_separadores = {};
 let estados = [];
@@ -85,8 +85,8 @@ function gerar_simulacao(relacoes2) {
 let distribuicao = [];
 function gerar_distribuicao_conjunta(relacoes2) {
   estados = Object.keys(relacoes2);
-  if (json_distribuicao) {
-    distribuicao = json_distribuicao;
+  if (window.json_distribuicao) {
+    distribuicao = window.json_distribuicao;
     return;
   }
   distribuicao = [];
@@ -193,8 +193,8 @@ function conjunto_d_separacao(X, Y, conjunto) {
   let xy = independencia_condicional(X, Y, []);
   if (xy)
     return [];
-  for (let i = 1; i < sub_conjunto.length; i++) {
-    let possivel_separador = combinacoes(sub_conjunto, i);
+  for (let i = 0; i < sub_conjunto.length; i++) {
+    let possivel_separador = combinacoes(sub_conjunto, i + 1);
     for (let z of possivel_separador) {
       let xyz = independencia_condicional(X, Y, z);
       if (xyz)

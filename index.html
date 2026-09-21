@@ -115,7 +115,7 @@
 
         reader.onload = function(e) {
             try {
-                json_distribuicao = JSON.parse(e.target.result);
+                window.json_distribuicao = JSON.parse(e.target.result);
             } catch (error) {
                 alert(error);
             }
